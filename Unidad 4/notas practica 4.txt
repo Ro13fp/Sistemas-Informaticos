@@ -1,0 +1,224 @@
+Práctica Sistemas 04
+
+
+PTO2.-¿Se pueden configurar permisos locales en la partición nueva? 
+Di por qué sí o por qué no, y compruébalo. 
+Si no se puede, realiza lo necesario para poderlo hacer (0,75 puntos)
+
+
+Tal y como está creada la partición no se podría, ya que el sistema de archivos
+debería ser NTFS en lugar de FAT32. Para solucionarlo, sencillamente nos ponemos 
+sobre la partición, menú contextual, y hacemos click en formatear, y elegimos como 
+sistema de archivos NTFS.
+
+
+A continuación, nos colocamos sobre la partición, ya NTFS, menú contextual, y hacemos
+click en Propiedades. En la pestaña "Seguridad" podríamos administrar todos los permisos
+locales.
+
+En este caso podemos permitirnos hacerlo así, formateando, porque todavía no tenemos nada
+instalado ni guardado en esta partición. En caso de no querer formatear para no perder los
+archivos, simplemente entraríamos en la terminal y ejecutaríamos el siguiente comando: 
+convert Tarea_Rocio:/fs :ntfs
+
+_______________________________________________________________________________________
+
+PTO3.- Crea la siguiente estructura de carpetas en el raíz de C. 
+Crea primero la carpeta 'Tu_Apellido' (es decir, apellido del alumno) y dentro 
+de ésta las demás. 
+Introduce algunos archivos, documentos, imágenes en cada carpeta. (0,5 puntos)
+
+Entramos en c:\, y con el menú contextual, hacemos click en "Nuevo" --> "Carpeta"
+y le pongo mi apellido como nombre (Fortes). A continuación, entro en esa carpeta,
+y creo exactamente igual las 3 carpetas que se nos solicita en el enunciado (Administración,
+Venta y Contabilidad). 
+
+Por último guardo algunos archivos en cada una de ellas.`
+
+_______________________________________________________________________________________
+
+PTO4.-Usuarios y grupos
+Se van a crear 3 grupos (administración, venta y contabilidad), con 2 usuarios cada grupo. Ningún usuario es administrador.
+Nómbralos, con la inicial del nombre y el primer apellido (por ejemplo: Ignacio Díaz sería idiaz)
+Nombre de usuarios y grupos:
+Fernando Cortés, Marina Céspedes (Grupo administracion)
+Salvador Jiménez, Martín Rodríguez (Grupo venta)
+Luisa Serrano, Rosa Valle (Grupo contabilidad) (2 puntos)
+
+En primer lugar creamos los grupos. Para ello, en "Administración de Equipos" --> Grupos 
+Vamos al menú contextual y hacemos click en Grupo Nuevo. Ahí rellenamos el Nombre del Grupo
+y si ya tuviéramos los usuarios creados, podríamos agregarlos en el botón agregar. También
+podemos darle una descripción si así lo deseamos. Una vez cumplimentados los huecos correspondientes
+hacemos click en crear. Lo hacemos para cada uno de los tres grupos.
+
+Para crear los usuarios es muy similar. Entramos en Usuarios, menú contextual, y hacemos
+click en "Usuario nuevo", e igualmente vamos rellenando los huecos. Podríamos elegir si queremos
+el que los usuarios tengan contraseña, si queremos que la tengan que cambiar la primera vez
+que inicie sesión, etc.
+
+Por último, para añadir los usuarios a su grupo correspondiente, nos ponemos sobre el 
+usuario, menú contextual, y en Propiedades, hacemos click en la pestaña de Miembro de, donde
+pulsamos en Agregar. Escribimos el nombre del grupo, hacemos click en comprobar ahora
+y aceptamos. Lo hacemos para cada uno de los usuarios. Por último comprobamos que lo hemos
+hecho bien, entrando en las propiedades de cada usuario, y haciendo click en la pestaña
+Miembro de, donde veremos a qué grupo pertenece. También lo podemos comprobar en los grupos
+con el menú contextual de cada grupo, pulsando en Propiedades. Ahí vemos los miembros de cada
+grupo.
+
+________________________________________________________________________________________
+
+
+PTO5.- Configura los permisos de cada carpeta para que los grupos de usuarios de cada 
+departamento tengan permisos de lectura y escritura sobre su carpeta del departamento. 
+El grupo administración podrá leer los documentos del departamento ventas. 
+El resto de usuarios no tendrá acceso a carpetas de otros departamentos distintos 
+del suyo (2 puntos).
+
+En cada carpeta, en el menú contextual, Propiedades, en la pestaña seguridad, en Opciones
+avanzadas, deshabilitamos la herencia, y le quitamos todos los permisos heredados. Así podremos
+elegir quién podrá acceder y a quién dar o no dar los permisos. 
+Ahora podremos hacer click en Agregar, luego en Seleccionar una entidad de seguridad,
+escribimos el nombre del grupo, hacemos click en comprobar para ver si está correctamente
+escrito, y luego aceptamos, para a continuación poder agregar al grupo 
+de Administración y darle los permisos de lectura y escritura. Para denegar los permisos
+hacemos lo mismo, pero al elegir el grupo, arriba elegimos denegar en lugar de permitir.
+
+Haríamos lo mismo para cada carpeta, excepto para Ventas, en la que además añadimos al
+grupo de Administración con permisos de lectura.
+
+_______________________________________________________________________________________
+
+PTO6.- Inicia sesión con diferentes usuarios y comprueba que los permisos configurados 
+son correctos, comprueba específicamente, que en la carpeta venta hay usuarios que 
+pueden escribir, otros que solo pueden leer y otros que ni 
+siquiera pueden leer. (0,5 puntos)
+
+
+En cada carpeta, si vamos a propiedades, seguridad, opciones avanzadas, en Acceso Efectivo, elegimos
+el usuario, y hacemos click en ver acceso efectivo, y podremos ver los permisos concedidos o 
+denegados a cada uno.
+
+_________________________________________________________________________________________
+
+PTO7.- Habilita las directivas de contraseña correspondientes para que el sistema guarde 
+registro de las 4 últimas contraseñas de usuario, éstas deben ser complejas, 
+tener una vigencia máxima de 1 mes, una longitud mínima de 10 caracteres y que 
+permita hasta 3 equivocaciones del usuario al iniciar sesión. (1,5 puntos)
+
+Entrar en cmd como administrador, y ejecutar secpol.msc. Se nos abre una interfaz en la que debemos ir a 
+directivas de cuenta, y seleccionar las directivas de contraseña. Ahí iremos modificando cada una
+para cumplir los requisitos del enunciado.
+
+_________________________________________________________________________________________
+
+PTO8.- Configurar en tareas programadas, para que el archivo por lotes creado en el último 
+ejercicio de la tarea SI03 se ejecute todos los días a las 23:50. (0,5 puntos)
+
+
+Entramos en Administrador de equipos, y hacemos clic en el programador de tareas. A mano derecha, veremos
+la opción "Crear tarea básica". Hacemos click en ella y vamos cubriendo los campos, hasta donde
+nos pide importar el programita que creamos en la ud. 3 que se llamaba lote.bat, y que yo he creado
+previamente en C:\. Vamos cubriendo todos los campos y aceptamos hasta que terminamos y podemos comprobar
+que está entre las tareas diarias programadas.
+
+__________________________________________________________________________________________
+
+
+PTO9.- Configurar para que los usuarios tengan una cuota de usuario de 5GB con aviso a los 
+3GB (0,6 puntos)
+
+Abrimos la terminal con permisos de administrador, y ejecutamos gpedit.msc. Con esto abriremos el
+Editor de directivas de grupo local. En la sección Configuración del equipo, pulsamos en Plantillas
+administrativas, y a continuación en Sistema --> Cuotas de disco. Se abren una serie de directivas
+que podemos elegir. Seleccionaremos la que pone Especificar el límite de cuota y nivel de aviso
+predeterminado. Ahí pondremos el límite en 5Gb con aviso a los 3Gb.
+
+
+_____________________________________________________________________________________________
+
+PTO10.- Activar la protección del sistema y crear un punto de restauración. (0,5 puntos)
+
+Vamos a las propiedades en Equipo. A Continuación hacemos click en Protección del sistema de la 
+ventana Propiedades del sistema. Vamos a ver que por defecto la protección del sistema viene
+deshabilitada. Para poder crear un pto de restauración tenemos que hacer click en configurar, hacemos
+click en Activar protección del sistema, y le decimos el tamaño máximo en disco que se utilizará 
+para la protección del sistema, y aceptar. Lo hacemos para el sistema y para la partición que creamos
+al principio. Para terminar, sólo debemos hacer click en crear, y ya nos hará el punto de restauración
+para el sistema.
+Para comprobar que está bien realizado el primer punto de restauración (al que he llamado primer
+punto), hacemos click en Restaurar sistema... luego en Siguiente, y podremos ver el punto de restauración
+que hemos creado.
+
+________________________________________________________________________________________________
+
+PTO11.- Desfragmenta y chequea la unidad donde tengas instalado Windows. (0,5 puntos)
+
+Abrimos Equipo, y en la unidad C:\, en Propiedades, en la pestaña Herramientas, hacemos click en
+Optimizar. Se nos abre una pestaña que se llama Optimizar Unidades, seleccionamos la unidad, y hacemos 
+click en Optimizar. Esto defragmentará la unidad.
+
+Para chequearla, hacemos click en la opción Comprobar errores de la solapa Herramientas. Hacemos click
+en Examinar unidad, y nos comprobará si hay errores. En este caso no ha detectado ninguno.
+
+
+_________________________________________________________________________________________________
+
+PTO12.- Crea un carpeta en el escritorio y llámala:
+GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}
+
+Al abrir la carpeta, se tiene acceso a la mayoría de las configuraciones de Windows. 
+A esto se le conoce como modo Dios (GodMode)  (0,15 puntos)
+
+
+Nos colocamos en el escritorio, y con el menú contextual, hacemos clic en Nueva --> Carpeta.
+A la hora de nombrarla, simplemente le ponemos de nombreGodMode.{ED7BA470-8E54-465E-825C-99712043E01C}
+Al acabar de escribir el nombre, damos enter y ya estaría lista. Al abrirla vemos que podemos acceder
+a la mayoría de las configuraciones de windows, algo que me parece sumamente práctico.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
